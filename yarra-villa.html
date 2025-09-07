@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Countryside Villa | Airbnb Lodge</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="lodge-page">
+  <div id="page-wrapper">
+
+    <!-- Header -->
+    <header class="airbnb-header">
+      <div class="airbnb-logo-container">
+        <img class="airbnb-logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/logo.png" alt="Airbnb Logo" />
+      </div>
+      <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+      <nav class="airbnb-nav">
+        <div class="airbnb-nav-element"><a href="index.html">Home</a></div>
+        <div class="airbnb-nav-element"><a href="destinations.html">Destinations</a></div>
+        <div class="airbnb-nav-element"><a href="local-experiences.html">Local Experiences</a></div>
+        <div class="airbnb-nav-element"><a href="login.html">Login</a></div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <section class="content-section light-bg room-details">
+        <h2>Countryside Villa</h2>
+        <img src="images/countryside.webp" alt="Countryside Villa" style="width: 100%; max-width: 700px;" />
+        <p>
+          Experience the tranquility of Yarra Valley in this charming countryside villa.
+          Spacious garden and outdoor space perfect for pets and family gatherings.
+        </p>
+        <h3>Details & Amenities</h3>
+        <ul>
+          <li>4 Bedrooms, 3 Bathrooms</li>
+          <li>Large garden and BBQ area</li>
+          <li>Pet-friendly with walking trails</li>
+          <li>Fully equipped kitchen</li>
+          <li>WiFi and cable TV</li>
+          <li>Close to wineries and local attractions</li>
+        </ul>
+        <h3>Pricing</h3>
+        <p><strong>$240 per night</strong></p>
+        <h3>Reviews</h3>
+        <blockquote>
+          <p>"Beautiful villa in a peaceful area. Great for pets and kids."</p>
+          <footer>- Rachel T.</footer>
+        </blockquote>
+        <blockquote>
+          <p>"Well maintained and very comfortable stay. The garden was a highlight."</p>
+          <footer>- Laurence VS.</footer>
+        </blockquote>
+         
+    
+<h3>Booking</h3>
+<form class="booking-form">
+  <p id="booking-message" class="booking-message hidden">Booked!</p>
+
+  <label for="checkin">Check-in Date:</label>
+  <input type="date" id="checkin" name="checkin" required />
+  <br><br>
+
+  <label for="checkout">Check-out Date:</label>
+  <input type="date" id="checkout" name="checkout" required />
+  <br><br>
+
+  <label for="payment-method">Choose Payment Method:</label>
+  <select id="payment-method" name="payment-method" required>
+    <option value="">-- Select --</option>
+    <option value="card">Credit/Debit Card</option>
+    <option value="paypal">PayPal</option>
+    <option value="gcash">GCash</option>
+  </select>
+  <br><br>
+
+  <!-- Credit Card Fields -->
+  <div id="card-fields" class="payment-fields hidden">
+    <label for="card-name">Cardholder Name:</label>
+    <input type="text" id="card-name" name="card-name" />
+    <br><br>
+
+    <label for="card-number">Card Number:</label>
+    <input type="text" id="card-number" name="card-number" maxlength="19" placeholder="1234 5678 9012 3456" />
+    <br><br>
+
+    <label for="expiry">Expiry Date:</label>
+    <input type="month" id="expiry" name="expiry" />
+    <br><br>
+
+    <label for="cvv">CVV:</label>
+    <input type="text" id="cvv" name="cvv" maxlength="4" placeholder="123" />
+    <br><br>
+  </div>
+
+  <!-- PayPal Message -->
+  <div id="paypal-fields" class="payment-fields hidden">
+    <p>You will be redirected to PayPal after clicking "Pay & Book Now."</p>
+  </div>
+
+  <!-- GCash Message -->
+  <div id="gcash-fields" class="payment-fields hidden">
+    <p>We will send a GCash payment link to your registered mobile number.</p>
+  </div>
+<!-- Show only when PayPal is selected -->
+<div id="paypal-button-container" class="payment-fields hidden"></div>
+
+  <button type="submit">Pay & Book Now</button>
+         <a href="lodge.html" class="back-link">&larr; Back to Lodge</a>
+
+</form>
+
+<script>
+  const form = document.querySelector('.booking-form');
+  const message = document.getElementById('booking-message');
+
+  const paymentSelect = document.getElementById('payment-method');
+  const cardFields = document.getElementById('card-fields');
+  const paypalFields = document.getElementById('paypal-fields');
+  const gcashFields = document.getElementById('gcash-fields');
+
+  paymentSelect.addEventListener('change', function () {
+    const method = this.value;
+    cardFields.classList.add('hidden');
+    paypalFields.classList.add('hidden');
+    gcashFields.classList.add('hidden');
+
+    if (method === 'card') {
+      cardFields.classList.remove('hidden');
+    } else if (method === 'paypal') {
+      paypalFields.classList.remove('hidden');
+    } else if (method === 'gcash') {
+      gcashFields.classList.remove('hidden');
+    }
+  });
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    message.classList.remove('hidden');
+
+    setTimeout(() => {
+      message.classList.add('hidden');
+    }, 5000);
+  });
+  paymentSelect.addEventListener('change', function () {
+  const method = this.value;
+  cardFields.classList.add('hidden');
+  paypalFields.classList.add('hidden');
+  gcashFields.classList.add('hidden');
+  document.getElementById('paypal-button-container').classList.add('hidden');
+
+  if (method === 'card') {
+    cardFields.classList.remove('hidden');
+  } else if (method === 'paypal') {
+    paypalFields.classList.remove('hidden');
+    document.getElementById('paypal-button-container').classList.remove('hidden');
+
+    // Render PayPal Button
+    paypal.Buttons({
+      style: {
+        layout: 'vertical',
+        color:  'blue',
+        shape:  'rect',
+        label:  'paypal'
+      },
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '280.00' 
+            }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('Payment completed by ' + details.payer.name.given_name);
+          message.classList.remove('hidden');
+        });
+      }
+    }).render('#paypal-button-container');
+  } else if (method === 'gcash') {
+    gcashFields.classList.remove('hidden');
+  }
+});
+
+</script>
+</html>

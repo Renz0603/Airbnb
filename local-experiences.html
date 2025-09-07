@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Airbnb | Local Experiences</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700,900" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+     
+        .stay-card {
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+        }
+        .stay-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .stay-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+    </style>
+</head>
+<body class="experiences-page">
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <header class="airbnb-header">
+            <div class="airbnb-logo-container">
+                <img class="airbnb-logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/logo.png" alt="Airbnb Logo" />
+            </div>
+            <nav class="airbnb-nav">
+                <div class="airbnb-nav-element"><a href="index.html">Home</a></div>
+                <div class="airbnb-nav-element"><a href="lodge.html">Lodge</a></div>
+                <div class="airbnb-nav-element"><a href="destinations.html">Destinations</a></div>
+                <div class="airbnb-nav-element"><a href="login.html">Login</a></div>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <section id="local-experiences" class="content-section light-bg">
+                <h2>Local Experiences</h2>
+                <div class="card-container">
+
+                    <a href="coffee-crawl.html" class="stay-link" title="Join local baristas through Melbourne’s best hidden cafés.">
+                        <div class="stay-card">
+                            <img src="images/cafe.jpg" alt="Coffee Tour" />
+                            <div class="info">
+                                <h3>Melbourne Coffee Crawl</h3>
+                                <p>Join local baristas through Melbourne’s best hidden cafés.</p>
+                                <span>From $30/person · Fitzroy</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="urban-art-workshop.html" class="stay-link" title="Create your own street art with a local graffiti artist.">
+                        <div class="stay-card">
+                            <img src="images/streetArt.webp" alt="Urban Art Workshop" />
+                            <div class="info">
+                                <h3>Urban Art Workshop</h3>
+                                <p>Create your own street art with a local graffiti artist.</p>
+                                <span>From $45/person · Downtown</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="yarra-valley-wine-tour.html" class="stay-link" title="Explore boutique wineries with expert sommeliers.">
+                        <div class="stay-card">
+                            <img src="images/YarraValleyWineTourfromMelbourne.jpg" alt="Yarra Valley Wine Tour" />
+                            <div class="info">
+                                <h3>Yarra Valley Wine Tour</h3>
+                                <p>Explore boutique wineries with expert sommeliers.</p>
+                                <span>From $80/person · Yarra Valley</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="surfing-lesson.html" class="stay-link" title="Catch your first wave on the iconic Melbourne beaches.">
+                        <div class="stay-card">
+                            <img src="images/surfinhg.webp" alt="Surfing Lesson" />
+                            <div class="info">
+                                <h3>Beginner Surfing Lesson</h3>
+                                <p>Catch your first wave on the iconic Melbourne beaches.</p>
+                                <span>From $60/person · St Kilda</span>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="airbnb-footer">
+            <div class="footer-text">&copy; This Website is for project purposes only.</div>
+        </footer>
+
+    </div> <!-- END OF WRAPPER -->
+</body>
+</html>
